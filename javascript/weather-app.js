@@ -52,9 +52,21 @@ function displayTemperature(response) {
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
 }
 
-let apiKey = `fbb92b85cb462d93f2e6bd667b26244c`;
-let city = `Hawaii`;
-let unit = `metric`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityName = document.querySelector(`#city-name`);
+  search(cityName.value);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+function search(city) {
+  let apiKey = `fbb92b85cb462d93f2e6bd667b26244c`;
+  let unit = `metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+search("Ibadan");
+
+let form = document.querySelector(`#search-form`);
+form.addEventListener("submit", handleSubmit);
