@@ -1,5 +1,32 @@
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+
+  let minute = date.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Teusday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+
+  return `${day} ${hour}:${minute}`;
+}
+
 function displayTemperature(response) {
-  console.log(response.data);
+  let currentDate = document.querySelector(`#date`);
+  currentDate.innerHTML = formatDate(response.data.dt * 1000);
 
   let windElement = document.querySelector(`#wind`);
   windElement.innerHTML = Math.round(response.data.wind.speed);
