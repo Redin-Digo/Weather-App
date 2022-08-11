@@ -69,3 +69,7 @@ small {
   font-size: 16px;
   top: -34px;
 }
+
+#description {
+  text-transform: capitalize;
+}

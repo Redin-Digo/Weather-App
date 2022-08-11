@@ -10,6 +10,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="styling/weather-app.css" />
     <title>Vanilla Weather App</title>
   </head>
@@ -18,25 +19,24 @@
       <div class="weather-body-wrapper">
         <div class="weather-body">
           <div class="overview">
-            <h1>Lekki</h1>
+            <h1 id="city"></h1>
             <ul>
               <li>Wednesday 12:40</li>
-              <li>Sunny</li>
+              <li id="description"></li>
             </ul>
           </div>
           <div class="row">
             <div class="col-md-6">
               <div class="clearfix weather-temperature">
                 <img src="images/sun.png" alt="Sunny" class="float-left" />
-                <strong>34</strong
+                <strong id="temperature"></strong
                 ><span class="units">°C|<a href="#">°F</a></span>
               </div>
             </div>
             <div class="col-md-6">
               <ul>
-                <li>Precipitation: 0%</li>
-                <li>Wind: 2km/kr</li>
-                <li>Humidity: 73%</li>
+                <li>Wind: <span id="wind"></span>km/hr</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
               </ul>
             </div>
           </div>
