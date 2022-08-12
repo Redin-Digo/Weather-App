@@ -65,6 +65,17 @@ small {
   top: -34px;
 }
 
+.weather-temperature .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+  text-decoration: none;
+}
+
 #description {
   text-transform: capitalize;
+}
+
+#fahrenheit-link,
+#celsius-link {
+  text-decoration: none;
 }

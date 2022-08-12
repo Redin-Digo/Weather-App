@@ -48,6 +48,8 @@ function displayTemperature(response) {
   let cityElement = document.querySelector(`#city`);
   cityElement.innerHTML = response.data.name;
 
+  celsiusTemperature = response.data.main.temp;
+
   let temperatureElement = document.querySelector(`#temperature`);
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
 }
@@ -58,6 +60,23 @@ function handleSubmit(event) {
   search(cityName.value);
 }
 
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusConversion.classList.remove("active");
+  fahrenheitConversion.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitConversion.classList.remove("active");
+  celsiusConversion.classList.add("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
 function search(city) {
   let apiKey = `fbb92b85cb462d93f2e6bd667b26244c`;
   let unit = `metric`;
@@ -66,7 +85,15 @@ function search(city) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
-search("Ibadan");
+let celsiusTemperature = null;
 
 let form = document.querySelector(`#search-form`);
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitConversion = document.querySelector("#fahrenheit-link");
+fahrenheitConversion.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusConversion = document.querySelector("#celsius-link");
+celsiusConversion.addEventListener("click", displayCelsiusTemperature);
+
+search("Ibadan");
