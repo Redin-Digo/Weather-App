@@ -24,6 +24,30 @@ function formatDate(timestamp) {
   return `${day} ${hour}:${minute}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Teu", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col-2">
+                <div class="weather-forecast-date">${day}</div>
+                <img src="images/sun.png" alt="sunny" width="50px" />
+                <div class="weather-forecast-range">
+                  <span class="max-temperature">18°</span>
+                  <span class="min-temperature">12°</span>
+                </div>
+              </div>
+           `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   let iconElement = document.querySelector(`#icon`);
   iconElement.setAttribute(
@@ -97,3 +121,4 @@ let celsiusConversion = document.querySelector("#celsius-link");
 celsiusConversion.addEventListener("click", displayCelsiusTemperature);
 
 search("Lagos");
+displayForecast();
