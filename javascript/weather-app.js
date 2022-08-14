@@ -96,4 +96,4 @@ fahrenheitConversion.addEventListener("click", displayFahrenheitTemperature);
 let celsiusConversion = document.querySelector("#celsius-link");
 celsiusConversion.addEventListener("click", displayCelsiusTemperature);
 
-search("Ibadan");
+search("Lagos");
