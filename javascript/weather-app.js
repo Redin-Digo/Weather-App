@@ -32,6 +32,7 @@ function formatDay(timestamp) {
 }
 
 function displayForecast(response) {
+  console.log(response.data);
   let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
@@ -112,15 +113,6 @@ function handleSubmit(event) {
   search(cityName.value);
 }
 
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  celsiusConversion.classList.remove("active");
-  fahrenheitConversion.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -141,9 +133,6 @@ let celsiusTemperature = null;
 
 let form = document.querySelector(`#search-form`);
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheitConversion = document.querySelector("#fahrenheit-link");
-fahrenheitConversion.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusConversion = document.querySelector("#celsius-link");
 celsiusConversion.addEventListener("click", displayCelsiusTemperature);
